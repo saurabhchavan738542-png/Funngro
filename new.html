@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Funngro Revamp</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif;
+      scroll-behavior:smooth;
+    }body{
+  background:#050816;
+  color:white;
+  overflow-x:hidden;
+}
+
+body::before{
+  content:'';
+  position:fixed;
+  width:500px;
+  height:500px;
+  background:#00ffae22;
+  filter:blur(120px);
+  top:-150px;
+  left:-150px;
+  z-index:-1;
+}
+
+body::after{
+  content:'';
+  position:fixed;
+  width:500px;
+  height:500px;
+  background:#00b3ff22;
+  filter:blur(120px);
+  bottom:-150px;
+  right:-150px;
+  z-index:-1;
+}
+
+nav{
+  position:fixed;
+  width:100%;
+  top:0;
+  z-index:1000;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 8%;
+  background:rgba(255,255,255,0.05);
+  backdrop-filter:blur(15px);
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+nav h1{
+  color:#00ffae;
+  font-size:32px;
+  font-weight:700;
+  letter-spacing:1px;
+}
+
+nav ul{
+  display:flex;
+  gap:30px;
+  list-style:none;
+}
+
+nav ul li a{
+  text-decoration:none;
+  color:white;
+  font-weight:500;
+  transition:0.3s;
+}
+
+nav ul li a:hover{
+  color:#00ffae;
+}
+
+section{
+  min-height:100vh;
+  padding:120px 8%;
+}
+
+.hero{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:60px;
+  flex-wrap:wrap;
+}
+
+.hero-text{
+  flex:1;
+}
+
+.tag{
+  display:inline-block;
+  padding:10px 18px;
+  border-radius:40px;
+  background:#00ffae22;
+  color:#00ffae;
+  margin-bottom:20px;
+  border:1px solid #00ffae44;
+}
+
+.hero-text h2{
+  font-size:72px;
+  line-height:1.1;
+  margin-bottom:20px;
+  font-weight:700;
+}
+
+.hero-text h2 span{
+  background:linear-gradient(90deg,#00ffae,#00b3ff);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.hero-text p{
+  color:#d7d7d7;
+  line-height:1.9;
+  margin-bottom:35px;
+  max-width:650px;
+  font-size:17px;
+}
+
+.buttons{
+  display:flex;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  display:inline-block;
+  padding:15px 32px;
+  background:linear-gradient(90deg,#00ffae,#00b3ff);
+  color:#07111f;
+  border-radius:50px;
+  text-decoration:none;
+  font-weight:700;
+  transition:0.3s;
+  box-shadow:0 10px 30px rgba(0,255,174,0.25);
+}
+
+.btn:hover{
+  transform:translateY(-5px);
+}
+
+.btn2{
+  border:1px solid rgba(255,255,255,0.2);
+  padding:15px 32px;
+  border-radius:50px;
+  text-decoration:none;
+  color:white;
+  transition:0.3s;
+}
+
+.btn2:hover{
+  background:white;
+  color:black;
+}
+
+.hero-image{
+  flex:1;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.glass{
+  width:420px;
+  height:420px;
+  border-radius:35px;
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,0.1);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  position:relative;
+  overflow:hidden;
+  animation:float 4s ease-in-out infinite;
+}
+
+.glass::before{
+  content:'';
+  position:absolute;
+  width:200px;
+  height:200px;
+  background:#00ffae33;
+  border-radius:50%;
+  top:-50px;
+  right:-50px;
+}
+
+.glass::after{
+  content:'';
+  position:absolute;
+  width:160px;
+  height:160px;
+  background:#00b3ff33;
+  border-radius:50%;
+  bottom:-50px;
+  left:-50px;
+}
+
+.glass h3{
+  font-size:50px;
+  z-index:2;
+  text-align:center;
+  line-height:1.4;
+  background:linear-gradient(90deg,#00ffae,#ffffff);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+@keyframes float{
+  0%{transform:translateY(0px)}
+  50%{transform:translateY(-15px)}
+  100%{transform:translateY(0px)}
+}
+
+.stats{
+  margin-top:60px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:25px;
+}
+
+.card{
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.08);
+  backdrop-filter:blur(10px);
+  padding:30px;
+  border-radius:24px;
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:translateY(-8px);
+  border-color:#00ffae;
+}
+
+.card h4{
+  font-size:42px;
+  margin-bottom:10px;
+  color:#00ffae;
+}
+
+.card p{
+  color:#d5d5d5;
+}
+
+.section-title{
+  text-align:center;
+  margin-bottom:70px;
+}
+
+.section-title h2{
+  font-size:54px;
+  margin-bottom:15px;
+}
+
+.section-title p{
+  color:#bdbdbd;
+  font-size:17px;
+}
+
+.features{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:30px;
+}
+
+.feature-box{
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.08);
+  padding:35px;
+  border-radius:28px;
+  transition:0.4s;
+  position:relative;
+  overflow:hidden;
+}
+
+.feature-box::before{
+  content:'';
+  position:absolute;
+  width:100%;
+  height:5px;
+  background:linear-gradient(90deg,#00ffae,#00b3ff);
+  top:0;
+  left:0;
+}
+
+.feature-box:hover{
+  transform:translateY(-10px);
+  border-color:#00ffae;
+}
+
+.feature-box h3{
+  font-size:26px;
+  margin-bottom:15px;
+  color:#00ffae;
+}
+
+.feature-box p{
+  line-height:1.8;
+  color:#d4d4d4;
+}
+
+.cta{
+  margin-top:90px;
+  padding:70px;
+  border-radius:35px;
+  background:linear-gradient(135deg,#00ffae,#00b3ff);
+  text-align:center;
+  color:#07111f;
+  box-shadow:0 15px 50px rgba(0,255,174,0.2);
+}
+
+.cta h2{
+  font-size:52px;
+  margin-bottom:20px;
+}
+
+.cta p{
+  max-width:750px;
+  margin:auto;
+  line-height:1.9;
+  margin-bottom:35px;
+  font-weight:500;
+}
+
+.cta .btn{
+  background:#07111f;
+  color:white;
+}
+
+footer{
+  padding:30px;
+  text-align:center;
+  color:#bdbdbd;
+  background:#02040a;
+  border-top:1px solid rgba(255,255,255,0.08);
+}
+
+@media(max-width:900px){
+  .hero-text h2{
+    font-size:48px;
+  }
+
+  .glass{
+    width:320px;
+    height:320px;
+  }
+
+  .glass h3{
+    font-size:38px;
+  }
+}
+
+@media(max-width:600px){
+  nav{
+    padding:15px 5%;
+  }
+
+  nav ul{
+    gap:15px;
+    font-size:13px;
+  }
+
+  .hero-text h2{
+    font-size:38px;
+  }
+
+  .section-title h2{
+    font-size:38px;
+  }
+
+  .cta{
+    padding:40px 20px;
+  }
+
+  .cta h2{
+    font-size:34px;
+  }
+}
+
+  </style>
+</head>
+<body>  <nav>
+    <h1>Funngro</h1>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#teen">Teen Page</a></li>
+      <li><a href="#company">Company Page</a></li>
+    </ul>
+  </nav>  <!-- PAGE 1 -->  <section id="home">
+    <div class="hero">
+      <div class="hero-text">
+        <h2>Smart Platform For <span>Teen Talent</span></h2>
+        <p>
+          Funngro connects talented teenagers with real companies and exciting projects. Learn skills, earn money, and build your future with industry-level opportunities.
+        </p>
+        <a href="#teen" class="btn">Explore More</a><div class="stats">
+      <div class="card">
+        <h4>10K+</h4>
+        <p>Teen Users</p>
+      </div>
+
+      <div class="card">
+        <h4>500+</h4>
+        <p>Partner Companies</p>
+      </div>
+
+      <div class="card">
+        <h4>1000+</h4>
+        <p>Live Projects</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-image">
+    <div class="circle">
+      <h3>Learn <br> Earn <br> Grow</h3>
+    </div>
+  </div>
+</div>
+
+  </section>  <!-- PAGE 2 -->  <section id="teen">
+    <div class="section-title">
+      <h2>Why Teens Love Funngro</h2>
+      <p>Build skills and work with real startups from anywhere.</p>
+    </div><div class="features">
+  <div class="feature-box">
+    <h3>Real Projects</h3>
+    <p>
+      Work on live projects from startups and companies to gain practical experience and improve your portfolio.
+    </p>
+  </div>
+
+  <div class="feature-box">
+    <h3>Earn While Learning</h3>
+    <p>
+      Teens can earn money while learning valuable technical and communication skills.
+    </p>
+  </div>
+
+  <div class="feature-box">
+    <h3>Career Growth</h3>
+    <p>
+      Get exposure to website development, app development, digital marketing, design, and business.
+    </p>
+  </div>
+
+  <div class="feature-box">
+    <h3>Remote Opportunities</h3>
+    <p>
+      Access work-from-home opportunities and flexible projects from across India.
+    </p>
+  </div>
+
+  <div class="feature-box">
+    <h3>SEO Friendly</h3>
+    <p>
+      Modern SEO optimized website structure helps businesses and teens get better online visibility.
+    </p>
+  </div>
+
+  <div class="feature-box">
+    <h3>Modern UI/UX</h3>
+    <p>
+      Attractive user interface with responsive design that works smoothly on mobile, tablet, and desktop.
+    </p>
+  </div>
+</div>
+
+<div class="cta" id="company">
+  <h2>Hire Skilled Teen Talent</h2>
+  <p>
+    Companies can collaborate with energetic young minds for creative, technical, and digital projects at affordable costs.
+  </p>
+  <a href="#home" class="btn">Get Started</a>
+</div>
+
+  </section>  <footer>
+    © 2026 Funngro Revamp | Designed with HTML & CSS
+  </footer></body>
+</html>
